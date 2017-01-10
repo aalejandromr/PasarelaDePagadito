@@ -1,0 +1,76 @@
+<div class="col-xs-12">
+  <div class="col-xs-8 col-xs-offset-4">
+    <h1> Pasarela Pagadito </h1>
+  </div>
+</div>
+
+<div class="col-xs-8">
+  <% @producto.each do |p| %>
+  <div class="col-xs-4">
+    <div class="col-xs-12">
+      <h2> Titulo Producto </h2>
+    </div>
+    <div class="col-xs-12">
+    </div>
+    <div class="col-xs-12">
+      <p> <%= p.descripcion %> </p>
+    </div>
+    <div class="col-xs-12">
+      <center> Precio: <%= p.precio %> </center>
+    </div>
+    <div class="col-xs-12">
+      <input class="updown" type="button" onclick="down(<%=p.id%>, <%=p.cantidad%>);" value="<">
+      <form id="<%=p.id%>">
+      <input id="producto<%=p.id%>" type="text" readonly="readonly" value="0" size="2" name="producto<%=p.id%>">
+      <input id="precio<%=p.id%>" type="hidden" value="<%=p.precio%>" name="producto<%=p.id%>">
+      </form>
+      <input class="updown" type="button" onclick="up(<%=p.id%>, <%=p.cantidad%>);" value=">">
+    </div>
+  </div>
+  <% end %>
+
+</div>
+
+<div class="col-xs-4">
+  <div class="col-xs-12">
+    <h2> Descripcion de pedido </h2>
+    <form id="compras">
+      <input type="button" value="comprar" id="comprar">
+    </form>
+  </div>
+</div>
+
+
+<script type="text/javascript">
+
+ function  up(id, producto){
+    cantidadu = document.getElementById("producto" + id).value;
+    if(parseInt(cantidadu) < producto)
+    {
+      $.ajax({
+        success: function(data){
+          document.getElementById("producto" + id).value = parseInt(cantidadu) + 1;
+        }
+      });
+    }
+  }
+
+  function down(id, producto){
+    cantidadu = document.getElementById("producto" + id).value;
+    if(parseInt(cantidadu) > 0)
+    {
+      $.ajax({
+        success: function(data){
+          document.getElementById("producto" + id).value = parseInt(cantidadu) - 1;
+        }
+      });
+    }
+  }
+
+  $("#comprar").click(function(){
+    var form = $("form").serializeArray();
+    console.log(form);
+    
+  });
+
+</script>
