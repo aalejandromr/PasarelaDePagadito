@@ -42,3 +42,4 @@ gem 'bootstrap-sass'
 gem 'simple_form'
 gem "haml-rails", "~> 0.9"
 gem 'fancybox2-rails'
+gem 'rest-client'

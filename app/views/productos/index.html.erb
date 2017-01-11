@@ -70,6 +70,15 @@
   $("#comprar").click(function(){
     var form = $("form").serializeArray();
     console.log(form);
+    $.ajax({
+      method: "POST",
+      data: {data: form},
+      url: "/productos",
+      success: function(data)
+      {
+        console.log(data);
+      }
+    });
     
   });
 

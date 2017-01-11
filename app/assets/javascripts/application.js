@@ -16,26 +16,4 @@
 //= require_tree .
 //= require bootstrap
 
-  function  up(id, producto){
-    cantidadu = document.getElementById("producto" + id).value;
-    if(parseInt(cantidadu) < producto)
-    {
-      $.ajax({
-        success: function(data){
-          document.getElementById("producto" + id).value = parseInt(cantidadu) + 1;    
-        }
-      });
-    }
-  }
-
-  function down(id, producto){
-    cantidadu = document.getElementById("producto" + id).value;
-    if(parseInt(cantidadu) > 0)
-    {
-      $.ajax({
-        success: function(data){
-          document.getElementById("producto" + id).value = parseInt(cantidadu) - 1;
-        }
-      });
-    }
-  }
+ 
